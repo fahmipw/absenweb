@@ -1,7 +1,10 @@
 <br />
 <strong><?= $title ?></strong><br />
 <br />
-<?= $this->session->flashdata('message'); ?>
+<?php if($this->session->flashdata('message')): ?>
+    <?= $this->session->flashdata('message'); ?>
+    <?php $this->session->set_flashdata('message', ''); ?>
+<?php endif; ?>
 <form id="form1" name="form1" method="post" action="<?php echo site_url('admin/home/update_password'); ?>">
     <table class="table">
         <tr>

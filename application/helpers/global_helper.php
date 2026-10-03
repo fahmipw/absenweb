@@ -8,6 +8,14 @@ function getnama($username) {
     return $data->nama_lengkap;
 }
 
+function getjabatan($username) {
+    $ci = &get_instance();
+    $sql = "SELECT jabatan FROM login WHERE username='$username'";
+    $query = $ci->db->query($sql);
+    $data = $query->row();
+    return $data && !empty($data->jabatan) ? $data->jabatan : '-';
+}
+
 function checkabsensi($username, $tgl, $checkinout) {
     $ci = &get_instance();
     $sql = "SELECT waktu, keterangan FROM absen WHERE username='$username' AND DATE(waktu)='$tgl' AND checkinout='$checkinout'";

@@ -4,7 +4,7 @@ $ci = &get_instance();
 ?>
 
 <!DOCTYPE html>
-<html lang="en" style="zoom: 100%;">
+<html lang="en">
 
 <head>
 
@@ -69,7 +69,7 @@ $ci = &get_instance();
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="zoom:85%;">
+                <div class="container-fluid">
 
                     <?php include($content . ".php"); ?>
 

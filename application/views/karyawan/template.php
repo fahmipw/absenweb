@@ -4,7 +4,7 @@ $ci = &get_instance();
 ?>
 
 <!DOCTYPE html>
-<html lang="en" style="zoom: 100%;">
+<html lang="en">
 
 <head>
 
@@ -69,7 +69,7 @@ $ci = &get_instance();
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid" style="zoom:85%;">
+                <div class="container-fluid">
 
                     <?php include($content . ".php"); ?>
 
@@ -121,6 +121,7 @@ $ci = &get_instance();
 
     <!-- Custom scripts for all pages-->
     <script src="<?= asset_url(); ?>js/sb-admin-2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
         $("#ExportExcel").click(function(e) {

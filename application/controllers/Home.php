@@ -32,7 +32,7 @@ class Home extends CI_Controller
 		$this->load->model('model_login');
 		$rowlogin = $this->model_login->selectdataby(
 			[
-				'username' => $this->input->post('username'),
+				'email' => $this->input->post('email'),
 			]
 		);
 		// $rowlogin = $this->model_login->cek($this->input->post('username'), password_verify($this->input->post('password'), $check->password));
@@ -40,6 +40,7 @@ class Home extends CI_Controller
 			$folder = ($rowlogin->level == "superadmin") ? "admin" : $rowlogin->level;
 			if ($this->input->post('password') == $rowlogin->password) {
             // if (password_verify($this->input->post('password'), $rowlogin->password)) {
+				$this->session->unset_userdata('message');
 				$data = array(
                     'username' => $rowlogin->username,
 					'nama' => $rowlogin->nama_lengkap,
@@ -48,17 +49,12 @@ class Home extends CI_Controller
 				$this->session->set_userdata($data);
 				redirect(strtolower($folder).'/home');
 			} else {
-				$this->session->set_flashdata('message', '
-				<div class="alert alert-danger" role="alert">
-					Password salah
-				</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah</div>');
+				$this->session->keep_flashdata('message');
 				redirect('home/login');
 			}
 		} else {
-			$this->session->set_flashdata('message', '
-			<div class="alert alert-danger" role="alert">
-				Username tidak ditemukan
-			</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email tidak ditemukan</div>');
 			redirect('home/login');
 		}
 	}

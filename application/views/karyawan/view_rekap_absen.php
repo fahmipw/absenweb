@@ -121,6 +121,7 @@ for ($d = 1; $d <= 31; $d++) {
                 <th>Hari</th>
                 <th>ID Karyawan</th>
                 <th>Nama Karyawan</th>
+                <th>Jabatan</th>
                 <th>Absen Masuk</th>
                 <th>Absen Pulang</th>
                 <th>Keterangan</th>
@@ -146,8 +147,7 @@ for ($d = 1; $d <= 31; $d++) {
                             <td><?= $tgl; ?></td>
                             <td><?= hari(date('N', strtotime($tgl))); ?></td>
                             <td><?= $rowkaryawan->nik; ?></td>
-                            <td><?= $rowkaryawan->nama_lengkap; ?></td>
-							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
+                            <td><?= $rowkaryawan->nama_lengkap; ?></td>                            <td><?= !empty($rowkaryawan->jabatan) ? $rowkaryawan->jabatan : '-'; ?></td>							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
 							<td><?= $pulang == '' ? '-' : date("H:i", strtotime($pulang)); ?></td>
 							<td>
 								<?= $keterangan1masuk == '' ? 'Tidak absen Check-In' : '' . ucwords($keterangan1masuk) . ''; ?><br>
@@ -173,8 +173,7 @@ for ($d = 1; $d <= 31; $d++) {
                             <td><?= $tgl; ?></td>
                             <td><?= hari(date('N', strtotime($tgl))); ?></td>
                             <td><?= $rowkaryawan->nik; ?></td>
-                            <td><?= $rowkaryawan->nama_lengkap; ?></td>
-							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
+                            <td><?= $rowkaryawan->nama_lengkap; ?></td>                            <td><?= !empty($rowkaryawan->jabatan) ? $rowkaryawan->jabatan : '-'; ?></td>							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
 							<td><?= $pulang == '' ? '-' : date("H:i", strtotime($pulang)); ?></td>
 							<td>
 								<?= $keterangan1masuk == '' ? 'Tidak absen Check-In' : '' . ucwords($keterangan1masuk) . ''; ?><br>

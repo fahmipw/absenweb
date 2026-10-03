@@ -24,6 +24,20 @@
     </a>
 </li>
 
+<li class="nav-item <?= ($content == "view_jabatan") ? "active" : "" ?>">
+    <a class="nav-link" href="<?= site_url('admin/jabatan'); ?>">
+        <i class="fas fa-fw fa-briefcase"></i>
+        <span>Jabatan</span>
+    </a>
+</li>
+
+<li class="nav-item <?= ($content == "view_barcode") ? "active" : "" ?>">
+    <a class="nav-link" href="<?= site_url('admin/barcode'); ?>">
+        <i class="fas fa-fw fa-qrcode"></i>
+        <span>Barcode Absensi</span>
+    </a>
+</li>
+
 <?php
 $arr_biaya = ['view_biaya'];
 $arr_absen = ['view_absen'];
@@ -31,15 +45,17 @@ $arr_rekap_absen = ['view_rekap_absen'];
 $arr_master = array_merge($arr_absen, $arr_rekap_absen);
 ?>
 <li class="nav-item <?= in_array($content, $arr_master) ? "active" : "" ?>">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#arr_master" aria-expanded="true" aria-controls="arr_master">
-        <i class="fas fa-fw fa-th-large" aria-hidden="true"></i>
+    <a class="nav-link" href="#arr_master" data-toggle="collapse" data-target="#arr_master" aria-expanded="<?= in_array($content, $arr_master) ? "true" : "false" ?>" aria-controls="arr_master">
+        <i class="fas fa-fw fa-clipboard-list" aria-hidden="true"></i>
         <span>Absensi</span>
+        <i class="fas fa-chevron-down ml-auto"></i>
     </a>
-    <div id="arr_master" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item <?= in_array($content, $arr_absen) ? "active" : "" ?>" href="<?= site_url('admin/absen'); ?>">Absen Sekarang</a>
-            <a class="collapse-item <?= in_array($content, $arr_rekap_absen) ? "active" : "" ?>" href="<?= site_url('admin/absen/rekap'); ?>">Rekap Absensi</a>
-        </div>
+    <div id="arr_master" class="collapse <?= in_array($content, $arr_master) ? "show" : "" ?>" data-parent="#accordionSidebar" style="margin-left: 1.2rem; border-left: 2px solid rgba(255,255,255,0.14); padding-left: 0.6rem;">
+        <a class="nav-link py-2 pl-2 pr-3 text-white-50 <?= in_array($content, $arr_absen) ? "active" : "" ?>" href="<?= site_url('admin/absen'); ?>">
+            <i class="fas fa-fw fa-fingerprint mr-2"></i>Absen Sekarang
+        </a>
+        <a class="nav-link py-2 pl-2 pr-3 text-white-50 <?= in_array($content, $arr_rekap_absen) ? "active" : "" ?>" href="<?= site_url('admin/absen/rekap'); ?>">
+            <i class="fas fa-fw fa-chart-bar mr-2"></i>Rekap Absensi
+        </a>
     </div>
 </li>

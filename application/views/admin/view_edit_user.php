@@ -36,12 +36,15 @@
 <br />
 <strong><?= $title ?></strong><br />
 <br />
-<?= $this->session->flashdata('message'); ?>
+<?php if($this->session->flashdata('user_message')): ?>
+    <?= $this->session->flashdata('user_message'); ?>
+    <?php $this->session->unset_userdata('user_message'); ?>
+<?php endif; ?>
 <form id="form1" name="form1" method="post" action="<?= site_url('admin/user/update/' . $rowuser->username); ?>" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="nik">ID Karyawan </label>
-        <input type="text" name="nik" id="nik" class="form-control" required value="<?= $rowuser->nik ?>" />
+        <input type="text" id="nik" class="form-control" required value="<?= $rowuser->nik ?>" readonly />
     </div>
     
     <div class="form-group">
@@ -55,6 +58,16 @@
             <option value="">Pilih Jenis Kelamin</option>
             <?php foreach ($arr_jkel as $item) : ?>
                 <option value="<?= $item ?>" <?= $rowuser->jkel == $item ? "selected" : "" ?>><?= $item ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="jabatan">Jabatan</label>
+        <select name="jabatan" id="jabatan" class="form-control" required>
+            <option value="">Pilih Jabatan</option>
+            <?php foreach ($arr_jabatan as $item) : ?>
+                <option value="<?= $item->nama_jabatan ?>" <?= $rowuser->jabatan == $item->nama_jabatan ? "selected" : "" ?>><?= $item->nama_jabatan ?></option>
             <?php endforeach ?>
         </select>
     </div>

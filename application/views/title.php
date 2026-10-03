@@ -1,7 +1,7 @@
 <?php
 $judul = "Aplikasi Absensi | PT. Srikandi Inti Prakarsa";
 $judul_mini = "Selamat datang, <br>Silahkan login terlebih dahulu untuk memulai absensi!";
-$lembaga = "Unknown";
+$lembaga = "PT. Srikandi Inti Prakarsa";
 $tagline = "Some Tag Line For Your Company";
 $arr_warna = [
     'biru' => 'primary',

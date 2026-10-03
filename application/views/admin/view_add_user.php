@@ -35,10 +35,7 @@
 <br />
 <form id="form1" name="form1" method="post" action="<?php echo site_url('admin/user/save'); ?>" enctype="multipart/form-data">
 
-    <div class="form-group">
-        <label for="nik">ID Karyawan </label>
-        <input type="text" name="nik" id="nik" class="form-control" required />
-    </div>
+    <!-- NIK generated automatically -->
 
     <div class="form-group">
         <label for="nama_lengkap">Nama Lengkap</label>
@@ -51,6 +48,16 @@
             <option value="">Pilih Jenis Kelamin</option>
             <?php foreach ($arr_jkel as $item) : ?>
                 <option value="<?= $item ?>"><?= $item ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="jabatan">Jabatan</label>
+        <select name="jabatan" id="jabatan" class="form-control" required>
+            <option value="">Pilih Jabatan</option>
+            <?php foreach ($arr_jabatan as $item) : ?>
+                <option value="<?= $item->nama_jabatan ?>"><?= $item->nama_jabatan ?></option>
             <?php endforeach ?>
         </select>
     </div>

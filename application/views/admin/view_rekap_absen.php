@@ -69,7 +69,10 @@
 <br />
 <strong><?= $title ?></strong><br />
 <hr />
-<?= $this->session->flashdata('message'); ?>
+<?php if($this->session->flashdata('message')): ?>
+    <?= $this->session->flashdata('message'); ?>
+    <?php $this->session->unset_userdata('message'); ?>
+<?php endif; ?>
 <?php
 for ($d = 1; $d <= 31; $d++) {
     $time = mktime(12, 0, 0, $bulan, $d, $tahun);
@@ -121,6 +124,7 @@ for ($d = 1; $d <= 31; $d++) {
                 <th>Hari</th>
                 <th>ID Karyawan</th>
                 <th>Nama Karyawan</th>
+                <th>Jabatan</th>
                 <th>Absen Masuk</th>
                 <th>Absen Pulang</th>
                 <th>Keterangan</th>
@@ -147,6 +151,7 @@ for ($d = 1; $d <= 31; $d++) {
                             <td><?= hari(date('N', strtotime($tgl))); ?></td>
                             <td><?= $rowkaryawan->nik; ?></td>
                             <td><?= $rowkaryawan->nama_lengkap; ?></td>
+                            <td><?= !empty($rowkaryawan->jabatan) ? $rowkaryawan->jabatan : '-'; ?></td>
 							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
 							<td><?= $pulang == '' ? '-' : date("H:i", strtotime($pulang)); ?></td>
 							<td>
@@ -174,6 +179,7 @@ for ($d = 1; $d <= 31; $d++) {
                             <td><?= hari(date('N', strtotime($tgl))); ?></td>
                             <td><?= $rowkaryawan->nik; ?></td>
                             <td><?= $rowkaryawan->nama_lengkap; ?></td>
+                            <td><?= !empty($rowkaryawan->jabatan) ? $rowkaryawan->jabatan : '-'; ?></td>
 							<td><?= $masuk == '' ? '-' : date("H:i", strtotime($masuk)); ?></td>
 							<td><?= $pulang == '' ? '-' : date("H:i", strtotime($pulang)); ?></td>
 							<td>

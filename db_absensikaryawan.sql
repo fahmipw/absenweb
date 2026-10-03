@@ -33,22 +33,22 @@ CREATE TABLE `absen` (
   `username` varchar(191) NOT NULL,
   `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `checkinout` varchar(191) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `foto_selfie` varchar(255) DEFAULT NULL,
+  `foto_path` varchar(255) DEFAULT NULL,
+  `foto_taken_at` datetime DEFAULT NULL,
+  `latitude` varchar(50) DEFAULT NULL,
+  `longitude` varchar(50) DEFAULT NULL,
+  `accuracy_gps` varchar(50) DEFAULT NULL,
+  `distance_m` decimal(10,2) DEFAULT NULL,
+  `status_absen` varchar(50) DEFAULT NULL,
+  `barcode_code` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `absen`
 --
 
-INSERT INTO `absen` (`id_absen`, `username`, `waktu`, `checkinout`, `keterangan`) VALUES
-('6657f711985c5', 'admin', '2024-05-29 20:48:33', 'In', 'Tesss check in'),
-('6657f71b46cff', 'admin', '2024-05-29 20:48:43', 'Out', 'Tess Out'),
-('66582398695be', 'fahmi', '2024-05-29 23:58:32', 'In', 'asdasd'),
-('665826f938452', 'fahmi', '2024-05-30 00:12:57', 'Out', 'asda sdasd'),
-('6658278c92675', 'kevin', '2024-05-30 00:15:24', 'In', 'Tes Check In'),
-('665827a439f78', 'kevin', '2024-05-30 00:15:48', 'Out', 'Tes check out'),
-('667eac5b2a0f9', 'admin', '2024-06-28 13:28:11', 'In', 'Masuk'),
-('667eac9c16b4d', 'fahmi_perdana', '2024-06-28 13:29:16', 'In', 'masuk');
 
 -- --------------------------------------------------------
 
@@ -67,21 +67,13 @@ CREATE TABLE `login` (
   `nik` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `ttd` varchar(191) NOT NULL,
+  `jabatan` varchar(191) DEFAULT NULL,
   `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
 --
-
-INSERT INTO `login` (`username`, `password`, `level`, `nama_lengkap`, `alamat`, `telepon`, `jkel`, `nik`, `email`, `ttd`, `waktu`) VALUES
-('admin', 'admin', 'admin', 'Administrator', 'Jl. Padjajaran Pamulang', 2147483647, 'Laki-laki', '20000', 'administrator@gmail.com', '6449c316d144e.png', '2024-07-03 09:35:23'),
-('fahmi', '123', 'karyawan', 'fahmi', 'JL. Bambu kuning, Jakarta Timur', 2147483647, 'Laki-laki', '20001', 'fahmi@gmail.com', '', '2024-07-03 09:29:06'),
-('fahmi_perdana', '123', 'karyawan', 'fahmi perdana', 'jl. kebagusan jaksel', 0, 'Laki-laki', 'abc', 'fahmipw@gmail.com', '', '2024-06-28 13:25:49'),
-('kevin', '123', 'karyawan', 'kevin', 'Jl. Siliwiangi, Pamulang', 2147483647, 'Laki-laki', '20003', 'kevin@gmail.com', '', '2024-06-28 07:16:36'),
-('luthfi', '123', 'karyawan', 'luthfi', 'Jl. Anggur, Jakarta Barat', 2147483647, 'Laki-laki', '20002', 'luthfi@gmail.com', '', '2024-06-28 07:16:36'),
-('yuda', '123', 'karyawan', 'yuda', 'jakarta', 2147483647, 'Laki-laki', '20202', 'asdasd@gmail.com', '', '2024-07-03 09:35:48');
-
 --
 -- Indexes for dumped tables
 --
@@ -113,3 +105,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE jabatan (id INT PRIMARY KEY AUT_INCREMENT, nama_jabatan VARCHAR(100) NOT NULL);
+
